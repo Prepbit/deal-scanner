@@ -22,6 +22,8 @@ RSS_FEEDS = [
 # =====================
 # FLASK (KEEP ALIVE)
 # =====================
+from flask import Flask
+
 app = Flask(__name__)
 
 @app.route("/")
