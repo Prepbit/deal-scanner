@@ -20,6 +20,9 @@ def parse(text):
     return {
         "raw": text,
         "ticker": tickers[0] if tickers else None,
+	"type": "acquisition" if "acquisition" in text.lower() else "unknown",
+        "take_private": "take-private" in text.lower(),
+        "rumor": "rumor" in text.lower(),
         "spread": 0.10
     }
 
@@ -39,6 +42,10 @@ def run():
 
                 d = parse(entry.title)
 
+		score = 50
+                
+		if score > 35:
+                    send_telegram("🚨 TEST SIGNAL\n" + entry.title)
                 if "acquisition" in entry.title.lower():
                     send_telegram(f"🚨 DEAL SIGNAL\n\n{entry.title}")
 
