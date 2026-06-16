@@ -25,6 +25,7 @@ def parse(text):
 
 def run():
     seen = set()
+    send_telegram("🟢 BOT STARTED OK")
 
     while True:
         for url in RSS_FEEDS:
