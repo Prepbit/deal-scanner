@@ -1,3 +1,16 @@
+#!/bin/bash
+
+set -e
+
+echo "🚀 Installing Hedge Fund Scanner v3..."
+
+cd ~/deal-scanner
+
+pip3 install feedparser requests beautifulsoup4 lxml
+
+mkdir -p modules data
+
+cat > bot.py << 'EOF'
 import time
 import requests
 import feedparser
@@ -133,3 +146,6 @@ while True:
             send(msg)
 
     time.sleep(60)
+EOF
+
+echo "✅ v3 installed"
